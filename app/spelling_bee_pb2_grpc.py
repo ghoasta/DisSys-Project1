@@ -5,7 +5,7 @@ import grpc
 import spelling_bee_pb2 as spelling__bee__pb2
 
 
-class GreeterStub(object):
+class SpellingBeeStub(object):
     """The greeting service definition.
     """
 
@@ -16,13 +16,18 @@ class GreeterStub(object):
             channel: A grpc.Channel.
         """
         self.SayHello = channel.unary_unary(
-                '/app.Greeter/SayHello',
+                '/app.SpellingBee/SayHello',
                 request_serializer=spelling__bee__pb2.HelloRequest.SerializeToString,
                 response_deserializer=spelling__bee__pb2.HelloReply.FromString,
                 )
+        self.SendWord = channel.unary_unary(
+                '/app.SpellingBee/SendWord',
+                request_serializer=spelling__bee__pb2.SendWordRequest.SerializeToString,
+                response_deserializer=spelling__bee__pb2.SendWordReply.FromString,
+                )
 
 
-class GreeterServicer(object):
+class SpellingBeeServicer(object):
     """The greeting service definition.
     """
 
@@ -33,22 +38,33 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SendWord(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
 
-def add_GreeterServicer_to_server(servicer, server):
+
+def add_SpellingBeeServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'SayHello': grpc.unary_unary_rpc_method_handler(
                     servicer.SayHello,
                     request_deserializer=spelling__bee__pb2.HelloRequest.FromString,
                     response_serializer=spelling__bee__pb2.HelloReply.SerializeToString,
             ),
+            'SendWord': grpc.unary_unary_rpc_method_handler(
+                    servicer.SendWord,
+                    request_deserializer=spelling__bee__pb2.SendWordRequest.FromString,
+                    response_serializer=spelling__bee__pb2.SendWordReply.SerializeToString,
+            ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'app.Greeter', rpc_method_handlers)
+            'app.SpellingBee', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Greeter(object):
+class SpellingBee(object):
     """The greeting service definition.
     """
 
@@ -63,8 +79,25 @@ class Greeter(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/app.Greeter/SayHello',
+        return grpc.experimental.unary_unary(request, target, '/app.SpellingBee/SayHello',
             spelling__bee__pb2.HelloRequest.SerializeToString,
             spelling__bee__pb2.HelloReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def SendWord(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/app.SpellingBee/SendWord',
+            spelling__bee__pb2.SendWordRequest.SerializeToString,
+            spelling__bee__pb2.SendWordReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

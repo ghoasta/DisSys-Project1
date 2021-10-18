@@ -17,12 +17,76 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='spelling_bee.proto',
   package='app',
   syntax='proto3',
-  serialized_options=b'\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW',
+  serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x12spelling_bee.proto\x12\x03\x61pp\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2;\n\x07Greeter\x12\x30\n\x08SayHello\x12\x11.app.HelloRequest\x1a\x0f.app.HelloReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
+  serialized_pb=b'\n\x12spelling_bee.proto\x12\x03\x61pp\"\x1f\n\x0fSendWordRequest\x12\x0c\n\x04word\x18\x01 \x01(\t\"\x1d\n\rSendWordReply\x12\x0c\n\x04word\x18\x01 \x01(\t\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2w\n\x0bSpellingBee\x12\x30\n\x08SayHello\x12\x11.app.HelloRequest\x1a\x0f.app.HelloReply\"\x00\x12\x36\n\x08SendWord\x12\x14.app.SendWordRequest\x1a\x12.app.SendWordReply\"\x00\x62\x06proto3'
 )
 
 
+
+
+_SENDWORDREQUEST = _descriptor.Descriptor(
+  name='SendWordRequest',
+  full_name='app.SendWordRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='word', full_name='app.SendWordRequest.word', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=27,
+  serialized_end=58,
+)
+
+
+_SENDWORDREPLY = _descriptor.Descriptor(
+  name='SendWordReply',
+  full_name='app.SendWordReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='word', full_name='app.SendWordReply.word', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=60,
+  serialized_end=89,
+)
 
 
 _HELLOREQUEST = _descriptor.Descriptor(
@@ -52,8 +116,8 @@ _HELLOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27,
-  serialized_end=55,
+  serialized_start=91,
+  serialized_end=119,
 )
 
 
@@ -84,13 +148,29 @@ _HELLOREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=57,
-  serialized_end=86,
+  serialized_start=121,
+  serialized_end=150,
 )
 
+DESCRIPTOR.message_types_by_name['SendWordRequest'] = _SENDWORDREQUEST
+DESCRIPTOR.message_types_by_name['SendWordReply'] = _SENDWORDREPLY
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+SendWordRequest = _reflection.GeneratedProtocolMessageType('SendWordRequest', (_message.Message,), {
+  'DESCRIPTOR' : _SENDWORDREQUEST,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.SendWordRequest)
+  })
+_sym_db.RegisterMessage(SendWordRequest)
+
+SendWordReply = _reflection.GeneratedProtocolMessageType('SendWordReply', (_message.Message,), {
+  'DESCRIPTOR' : _SENDWORDREPLY,
+  '__module__' : 'spelling_bee_pb2'
+  # @@protoc_insertion_point(class_scope:app.SendWordReply)
+  })
+_sym_db.RegisterMessage(SendWordReply)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
   'DESCRIPTOR' : _HELLOREQUEST,
@@ -107,21 +187,20 @@ HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Me
 _sym_db.RegisterMessage(HelloReply)
 
 
-DESCRIPTOR._options = None
 
-_GREETER = _descriptor.ServiceDescriptor(
-  name='Greeter',
-  full_name='app.Greeter',
+_SPELLINGBEE = _descriptor.ServiceDescriptor(
+  name='SpellingBee',
+  full_name='app.SpellingBee',
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=88,
-  serialized_end=147,
+  serialized_start=152,
+  serialized_end=271,
   methods=[
   _descriptor.MethodDescriptor(
     name='SayHello',
-    full_name='app.Greeter.SayHello',
+    full_name='app.SpellingBee.SayHello',
     index=0,
     containing_service=None,
     input_type=_HELLOREQUEST,
@@ -129,9 +208,19 @@ _GREETER = _descriptor.ServiceDescriptor(
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),
+  _descriptor.MethodDescriptor(
+    name='SendWord',
+    full_name='app.SpellingBee.SendWord',
+    index=1,
+    containing_service=None,
+    input_type=_SENDWORDREQUEST,
+    output_type=_SENDWORDREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
 ])
-_sym_db.RegisterServiceDescriptor(_GREETER)
+_sym_db.RegisterServiceDescriptor(_SPELLINGBEE)
 
-DESCRIPTOR.services_by_name['Greeter'] = _GREETER
+DESCRIPTOR.services_by_name['SpellingBee'] = _SPELLINGBEE
 
 # @@protoc_insertion_point(module_scope)

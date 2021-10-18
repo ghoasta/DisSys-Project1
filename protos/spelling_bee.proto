@@ -1,16 +1,20 @@
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_package = "io.grpc.examples.helloworld";
-option java_outer_classname = "HelloWorldProto";
-option objc_class_prefix = "HLW";
-
 package app;
 
 // The greeting service definition.
-service Greeter {
+service SpellingBee {
   // Sends a greeting
   rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SendWord (SendWordRequest) returns (SendWordReply) {}
+
+}
+message SendWordRequest{
+  string word = 1;
+}
+
+message SendWordReply{
+  string word = 1;
 }
 
 // The request message containing the user's name.
