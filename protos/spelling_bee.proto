@@ -2,9 +2,9 @@ syntax = "proto3";
 
 package app;
 
-// The greeting service definition.
+
 service SpellingBee {
-  // Sends a greeting
+
     rpc sayHello(Empty) returns (WorkPangram){}
 
     rpc sendWork(Word) returns (Points){}
