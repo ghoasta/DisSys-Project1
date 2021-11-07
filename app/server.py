@@ -3,21 +3,17 @@ import logging
 
 import grpc
 import spelling_bee_pb2, spelling_bee_pb2_grpc
-from calculations import choose_word
-from calculations import checkPangram
-
-#pangrams = {}
-
+from calculations import Calculations
 
 class SpellingBeeServer(spelling_bee_pb2_grpc.SpellingBeeServicer):
 
     def sayHello(self, request, context):
         #just send the pangram back to client
-        return spelling_bee_pb2.WorkPangram(pangram=pangram_word)
+        new_word = new_single.visual(pangram_word.upper())
+        return spelling_bee_pb2.WorkPangram(pangram=new_word)
 
     def sendWork(self, request, context):
-        #pangram = pangram_word
-        messege, points = checkPangram(request.word)
+        messege, points = new_single.checkPangram(request.word, pangram_word)
         return spelling_bee_pb2.Points(messege=messege, points=points, pangram=pangram_word)
 
 def serve():
@@ -30,6 +26,8 @@ def serve():
 
 if __name__ == '__main__':
     logging.basicConfig()
-    pangram_word = (choose_word())
-    print(pangram_word)
+    new_single = Calculations()
+    pangram_word = new_single.choose_word()
+    print("Server starting")
+    print(pangram_word.upper())
     serve()
