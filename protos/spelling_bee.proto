@@ -5,24 +5,24 @@ package app;
 // The greeting service definition.
 service SpellingBee {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
-  rpc SendWord (SendWordRequest) returns (SendWordReply) {}
+    rpc sayHello(Empty) returns (WorkPangram){}
+
+    rpc sendWork(Word) returns (Points){}
 
 }
-message SendWordRequest{
-  string word = 1;
+
+message Empty{}
+
+message WorkPangram{
+    string pangram = 1;
 }
 
-message SendWordReply{
-  string word = 1;
+message Word{
+    string word = 1;
 }
 
-// The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
-}
-
-// The response message containing the greetings
-message HelloReply {
-  string message = 1;
+message Points{
+    string messege = 1;
+    int32 points = 2;
+    string pangram = 3;
 }
