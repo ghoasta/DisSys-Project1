@@ -8,7 +8,6 @@ from calculations import Calculations
 class SpellingBeeServer(spelling_bee_pb2_grpc.SpellingBeeServicer):
 
     def sayHello(self, request, context):
-        #just send the pangram back to client
         new_word = new_single.visual(pangram_word.upper())
         return spelling_bee_pb2.WorkPangram(pangram=new_word)
 
